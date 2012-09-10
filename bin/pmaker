@@ -2,7 +2,8 @@
 <?php
 require_once(__DIR__.'/../src/bootstrap.php');
 
-use Symfony\Component\Console\Application;
- 
+use Pmaker\Console\Application;
+
+//echo $_SERVER['pwd']; 
 $console = new Application();
 $console->run();
