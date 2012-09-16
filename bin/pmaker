@@ -4,6 +4,5 @@ require_once(__DIR__.'/../src/bootstrap.php');
 
 use Pmaker\Console\Application;
 
-//echo $_SERVER['pwd']; 
 $console = new Application();
 $console->run();
