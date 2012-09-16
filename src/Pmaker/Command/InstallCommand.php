@@ -29,8 +29,8 @@ class InstallCommand extends Command {
             ->setName('install')
             ->setDescription('Install pmaker')
             ->setDefinition(array(
-                new InputOption('projects-dir', 'p', InputOption::VALUE_REQUIRED, 'The directory where Symfony2 projects should be stored', $_SERVER['PWD'].'/projects/'),
-                new InputOption('repo-dir', 'r', InputOption::VALUE_REQUIRED, 'The directory where Git repositories should be stored', $_SERVER['PWD'].'/repository/'),
+                new InputOption('projects-dir', 'p', InputOption::VALUE_REQUIRED, 'The directory where Symfony2 projects should be stored', $this->getRootDir().'/../projects/'),
+                new InputOption('repo-dir', 'r', InputOption::VALUE_REQUIRED, 'The directory where Git repositories should be stored', $this->getRootDir().'/../repository/'),
                 new InputOption('vhost-dir', 'vh', InputOption::VALUE_REQUIRED, 'The directory where virtual hosts are stored', '/etc/apache2/sites-available/'),
             ))
             ->setHelp(<<<EOT
@@ -56,12 +56,22 @@ EOT
             ),
         );
 
-        $dir = dirname(dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME'])).'/config/';
+        $dir = $this->getRootDir().'/config/';
         $fs = new Filesystem();
         if ($fs->exists($dir) === false)
             $fs->mkdir ($dir, 0755);
         
         file_put_contents($dir.'/config.yml', Yaml::dump($config));
+    }
+
+    protected function getBinDir()
+    {
+        return dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME']);
+    }
+
+    protected function getRootDir()
+    {
+        return dirname($this->getBinDir());
     }
 }
 
