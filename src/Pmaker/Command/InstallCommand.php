@@ -15,6 +15,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -55,7 +56,12 @@ EOT
             ),
         );
 
-        file_put_contents($_SERVER['PWD'].'/config.yml', Yaml::dump($config));
+        $dir = dirname(dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME'])).'/config/';
+        $fs = new Filesystem();
+        if ($fs->exists($dir) === false)
+            $fs->mkdir ($dir, 0755);
+        
+        file_put_contents($dir.'/config.yml', Yaml::dump($config));
     }
 }
 
