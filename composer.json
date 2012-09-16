@@ -1,7 +1,7 @@
 {
     "name": "creakiwi/pmaker",
     "description": "Project maker",
-    "keywords": ["project", "maker"],
+    "keywords": ["project", "maker", "symfony", "git"],
     "type": "library",
     "license": "TBA",
     "authors": [
