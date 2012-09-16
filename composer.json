@@ -3,7 +3,7 @@
     "description": "Project maker",
     "keywords": ["project", "maker", "symfony", "git"],
     "type": "library",
-    "license": "TBA",
+    "license": "MIT",
     "authors": [
         {
             "name": "Alexandre André",
