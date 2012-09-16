@@ -28,7 +28,7 @@ class AboutCommand extends Command {
             ->setHelp(<<<EOT
 <info>php pmaker about</info>
 EOT
-                    );
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
