@@ -64,13 +64,11 @@ EOT
         file_put_contents($dir.'/config.yml', Yaml::dump($config));
     }
 
-    protected function getBinDir()
-    {
+    protected function getBinDir() {
         return dirname($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME']);
     }
 
-    protected function getRootDir()
-    {
+    protected function getRootDir() {
         return dirname($this->getBinDir());
     }
 }
